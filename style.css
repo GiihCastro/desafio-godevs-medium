@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #1b2a34; 
+    color: #e0e0e0; 
+    line-height: 1.6;
+    padding: 1rem;
+}
+
+.container {
+    padding: 2rem;
+    margin: 1rem 0;
+    background-color: #2e3b2c; 
+    border-radius: 8px;
+    border: 1px solid #3a4a3c;
+    display: block; 
+}
+
+input[type="text"], input[type="number"], button {
+    border: 1px solid #3a4a3c; 
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-color: #3b4b3c;
+    color: #e0e0e0;
+    margin: 0.5rem 0;
+    width: calc(100% - 1rem); 
+}
+
+#result, #caesarResult, #insertResult, #equationResult, #persistenceResult, #passwordResult {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #2e3b2c; 
+    border: 1px solid #3a4a3c; 
+    border-radius: 5px;
+}
+
+h1, h2, h3 {
+    color: #ffffff; 
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #76c7c0; 
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
