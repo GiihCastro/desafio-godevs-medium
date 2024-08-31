@@ -31,7 +31,7 @@ input[type="text"], input[type="number"], button {
     width: calc(100% - 1rem); 
 }
 
-#result, #caesarResult, #insertResult, #equationResult, #persistenceResult, #passwordResult {
+#romanConversionResult, #caesarDecryptionResult, #wordInsertionResult, #equationSolutionResult, #multiplicativePersistenceResult, #passwordGenerationResult, #coordinatesSectorResult, #missingNumbersResult {
     margin-top: 1rem;
     padding: 1rem;
     background-color: #2e3b2c; 
@@ -47,8 +47,4 @@ h1, h2, h3 {
 a {
     color: #76c7c0; 
     text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }

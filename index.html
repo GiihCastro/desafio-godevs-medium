@@ -1,111 +1,59 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafio</title>
+    <title>Desafios</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <main>
-        <div id="container-01" class="container">
-            <h2>Conversor de Algarismos Romanos</h2>
-            <form id="romanForm">
-                <label for="romanInput">Insira um número em algarismos romanos:</label>
-                <input type="text" id="romanInput" placeholder="Ex: XII">
-                <button type="button" id="convertButton">Converter</button>
-            </form>
-            <p id="result"></p>
+
+    <div id="challenge1Container" class="content-container">
+            <h2>Desafio 1: Conversão de Números Romanos</h2>
+            <input type="text" id="romanInput" placeholder="Digite um número romano">
+            <button id="convertRomanButton">Converter</button>
+            <p id="romanResult"></p>
         </div>
-        
-        <div id="container-02" class="container">
-            <h2>Descriptografador de Cifra de César</h2>
-            <form id="caesarForm">
-                <label for="textInput">Insira o texto criptografado:</label>
-                <input type="text" id="textInput" placeholder="Texto criptografado">
-                <label for="shiftInput">Insira o número de deslocamento:</label>
-                <input type="number" id="shiftInput" placeholder="Ex: 3" min="1">
-                <button type="button" id="decryptButton">Descriptografar</button>
-            </form>
+
+        <div id="challenge2Container" class="content-container">
+            <h2>Desafio 2: Descriptografar Cifra de César</h2>
+            <input type="text" id="caesarInput" placeholder="Digite o texto cifrado">
+            <input type="number" id="caesarShift" placeholder="Digite o deslocamento">
+            <button id="decryptCaesarButton">Descriptografar</button>
             <p id="caesarResult"></p>
         </div>
-        
-        <div id="container-03" class="container">
-            <h2>Inserir Palavra em Posições Específicas</h2>
-            <form id="insertForm">
-                <label for="phraseInput">Insira a frase:</label>
-                <input type="text" id="phraseInput" placeholder="Frase">
-                
-                <label for="wordInput">Insira a palavra a ser inserida:</label>
-                <input type="text" id="wordInput" placeholder="Palavra">
-                
-                <label for="indexArrayInput">Insira os índices (separados por vírgula):</label>
-                <input type="text" id="indexArrayInput" placeholder="0,2,5">
-                
-                <button type="button" id="insertButton">Inserir Palavra</button>
-            </form>
+
+        <div id="challenge3Container" class="content-container">
+            <h2>Desafio 3: Inserir Palavras em Índices</h2>
+            <input type="text" id="phraseInput" placeholder="Digite uma frase">
+            <input type="text" id="wordInput" placeholder="Digite a palavra">
+            <input type="text" id="indicesInput" placeholder="Digite os índices separados por vírgula">
+            <button id="insertWordButton">Inserir Palavra</button>
             <p id="insertResult"></p>
         </div>
-        
-        <div id="container-04" class="container">
-            <h2>Resolução de Equações de Segundo Grau</h2>
-            <form id="equationForm">
-                <label for="aInput">Coeficiente a:</label>
-                <input type="number" id="aInput" placeholder="Ex: 1" value="0">
-                
-                <label for="bInput">Coeficiente b:</label>
-                <input type="number" id="bInput" placeholder="Ex: -3" value="0">
-                
-                <label for="cInput">Coeficiente c:</label>
-                <input type="number" id="cInput" placeholder="Ex: 2" value="0">
-                
-                <button type="button" id="solveButton">Calcular Raízes</button>
-            </form>
+
+        <div id="challenge4Container" class="content-container">
+            <h2>Desafio 4: Resolver Equações Quadráticas</h2>
+            <input type="number" id="aInput" placeholder="Digite a">
+            <input type="number" id="bInput" placeholder="Digite b">
+            <input type="number" id="cInput" placeholder="Digite c">
+            <button id="solveEquationButton">Resolver Equação</button>
             <p id="equationResult"></p>
         </div>
-        
-        <div id="container-05" class="container">
-            <h2>Persistência Multiplicativa</h2>
-            <form id="persistenceForm">
-                <label for="numberInput">Insira um número:</label>
-                <input type="number" id="numberInput" placeholder="Ex: 39">
-                <button type="button" id="calculateButton">Calcular Persistência</button>
-            </form>
+
+        <div id="challenge5Container" class="content-container">
+            <h2>Desafio 5: Calcular Persistência Multiplicativa</h2>
+            <input type="number" id="persistenceInput" placeholder="Digite um número">
+            <button id="calculatePersistenceButton">Calcular Persistência</button>
             <p id="persistenceResult"></p>
         </div>
-        
-        <div id="container-06" class="container">
-            <h2>Geração de Senhas</h2>
-            <form id="passwordForm">
-                <label for="optionsInput">Digite opções (separadas por vírgula):</label>
-                <input type="text" id="optionsInput" placeholder="Ex: a,b,c">
-                <button type="button" id="generateButton">Gerar Senhas</button>
-            </form>
-            <p id="passwordResult"></p>
+
+        <div id="challenge6Container" class="content-container">
+            <h2>Desafio 6: Gerar Senhas</h2>
+            <input type="text" id="optionsInput" placeholder="Digite opções separadas por vírgula">
+            <button id="generatePasswordsButton">Gerar Senhas</button>
+            <p id="passwordsResult"></p>
         </div>
-        
-        <div id="container-07" class="container">
-            <h2>Coordenadas e Setores</h2>
-            <form id="coordinatesForm">
-                <label for="coordinatesInput">Digite três coordenadas (x, y, z):</label>
-                <input type="text" id="coordinatesInput" placeholder="Ex: 37,42,15">
-                <button type="button" id="determineSectorButton">Determinar Setor e Distância</button>
-            </form>
-            <p id="sectorResult"></p>
-            <p id="distanceResult"></p>
-        </div>
-        
-        <div id="container-08" class="container">
-            <h2>Verificador de Números Faltantes</h2>
-            <form id="missingNumbersForm">
-                <label for="numbersInput">Digite uma lista de números (ex: 0001, 0003, 0004):</label>
-                <input type="text" id="numbersInput" placeholder="Ex: 0001, 0003, 0004">
-                <button type="button" id="checkMissingButton">Verificar Números Faltantes</button>
-            </form>
-            <p id="missingNumbersResult"></p>
-        </div>
-    </main>
 
     <script src="script.js"></script>
 </body>

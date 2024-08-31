@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
         return total;
     }
 
-    const convertButton = document.getElementById('convertButton');
-    convertButton.addEventListener('click', function () {
+    const convertRomanButton = document.getElementById('convertRomanButton');
+    convertRomanButton.addEventListener('click', function () {
         const romanInput = document.getElementById('romanInput').value.toUpperCase();
         const result = romanToDecimal(romanInput);
-        document.getElementById('result').textContent = `Resultado: ${result}`;
+        document.getElementById('romanResult').textContent = `Resultado: ${result}`;
     });
 
     function decryptCaesarCipher(text, shift) {
@@ -44,10 +44,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return result;
     }
 
-    const decryptButton = document.getElementById('decryptButton');
-    decryptButton.addEventListener('click', function () {
-        const textInput = document.getElementById('textInput').value;
-        const shiftInput = parseInt(document.getElementById('shiftInput').value);
+    const decryptCaesarButton = document.getElementById('decryptCaesarButton');
+    decryptCaesarButton.addEventListener('click', function () {
+        const textInput = document.getElementById('caesarInput').value;
+        const shiftInput = parseInt(document.getElementById('caesarShift').value);
         const result = decryptCaesarCipher(textInput, shiftInput);
         document.getElementById('caesarResult').textContent = `Resultado: ${result}`;
     });
@@ -70,11 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
         return result;
     }
 
-    const insertButton = document.getElementById('insertButton');
-    insertButton.addEventListener('click', function () {
+    const insertWordButton = document.getElementById('insertWordButton');
+    insertWordButton.addEventListener('click', function () {
         const phrase = document.getElementById('phraseInput').value;
         const word = document.getElementById('wordInput').value;
-        const indices = document.getElementById('indexArrayInput').value
+        const indices = document.getElementById('indicesInput').value
             .split(',')
             .map(Number)
             .filter(num => !isNaN(num));
@@ -111,75 +111,65 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 const root1 = (-this.b + Math.sqrt(delta)) / (2 * this.a);
                 const root2 = (-this.b - Math.sqrt(delta)) / (2 * this.a);
-                steps += `2. Δ > 0: há duas raízes reais.\n   x1 = (-b + √Δ) / (2a)\n   x1 = (-${this.b} + √${delta}) / (2*${this.a}) = ${root1}\n   x2 = (-b - √Δ) / (2a)\n   x2 = (-${this.b} - √${delta}) / (2*${this.a}) = ${root2}`;
+                steps += `2. Δ > 0: há duas raízes reais.\n   x1 = (-b + √Δ) / (2a)\n   x1 = (-(${this.b}) + √${delta}) / (2*${this.a}) = ${root1}\n\n   x2 = (-b - √Δ) / (2a)\n   x2 = (-(${this.b}) - √${delta}) / (2*${this.a}) = ${root2}`;
                 return steps;
             }
         }
     }
 
-    const solveButton = document.getElementById('solveButton');
-    solveButton.addEventListener('click', function () {
+    const solveEquationButton = document.getElementById('solveEquationButton');
+    solveEquationButton.addEventListener('click', function () {
         const a = parseFloat(document.getElementById('aInput').value);
         const b = parseFloat(document.getElementById('bInput').value);
         const c = parseFloat(document.getElementById('cInput').value);
 
         const equation = new Equation(a, b, c);
         const result = equation.calculateRoots();
-        document.getElementById('equationResult').textContent = `Resultado: \n${result}`;
+        document.getElementById('equationResult').textContent = `Resultado:\n${result}`;
     });
 
-    function calculatePersistence(number) {
-        if (number < 10) return 0;
-
+    function calculateMultiplicativePersistence(number) {
         let count = 0;
-        let num = number;
 
-        while (num >= 10) {
-            num = num.toString().split('').reduce((acc, digit) => acc * parseInt(digit), 1);
+        while (number >= 10) {
+            number = number.toString().split('').reduce((acc, digit) => acc * parseInt(digit), 1);
             count++;
         }
 
         return count;
     }
 
-    const calculateButton = document.getElementById('calculateButton');
-    calculateButton.addEventListener('click', function () {
-        const number = parseInt(document.getElementById('numberInput').value, 10);
-        if (isNaN(number) || number < 0) {
-            document.getElementById('persistenceResult').textContent = 'Por favor, insira um número válido.';
-            return;
-        }
-        const result = calculatePersistence(number);
+    const calculatePersistenceButton = document.getElementById('calculatePersistenceButton');
+    calculatePersistenceButton.addEventListener('click', function () {
+        const number = parseInt(document.getElementById('persistenceInput').value);
+        const result = calculateMultiplicativePersistence(number);
         document.getElementById('persistenceResult').textContent = `Persistência Multiplicativa: ${result}`;
     });
 
     function generatePasswords(options) {
-        const results = [];
+        if (options.length === 0) return [];
 
-        function permute(arr, m = []) {
-            if (arr.length === 0) {
-                results.push(m);
+        const results = [];
+        const permute = (arr, l, r) => {
+            if (l === r) {
+                results.push(arr.join(''));
             } else {
-                for (let i = 0; i < arr.length; i++) {
-                    const curr = arr.slice();
-                    const next = curr.splice(i, 1);
-                    permute(curr.slice(), m.concat(next));
+                for (let i = l; i <= r; i++) {
+                    [arr[l], arr[i]] = [arr[i], arr[l]];
+                    permute(arr, l + 1, r);
+                    [arr[l], arr[i]] = [arr[i], arr[l]];
                 }
             }
-        }
+        };
 
-        permute(options);
+        permute(options.split(','), 0, options.split(',').length - 1);
         return results;
     }
 
-    const generateButton = document.getElementById('generateButton');
-    generateButton.addEventListener('click', function () {
-        const options = document.getElementById('optionsInput').value.split(',').map(option => option.trim());
-        if (options.length === 0 || options.some(option => option === '')) {
-            document.getElementById('passwordResult').textContent = 'Por favor, insira opções válidas.';
-            return;
-        }
-        const result = generatePasswords(options);
-        document.getElementById('passwordResult').textContent = `Senhas Geradas:\n${result.map(arr => arr.join('')).join('\n')}`;
+    const generatePasswordsButton = document.getElementById('generatePasswordsButton');
+    generatePasswordsButton.addEventListener('click', function () {
+        const options = document.getElementById('optionsInput').value;
+        const passwords = generatePasswords(options);
+        document.getElementById('passwordsResult').textContent = `Senhas geradas:\n${passwords.join('\n')}`;
     });
 });
